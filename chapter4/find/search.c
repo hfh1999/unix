@@ -1,24 +1,14 @@
 #include "search.h"
 #define INFO_N 30
-struct  fileinfo * search(void)
+int main (int argc,char * argv[])
 {
-    DIR * dirnow;
-    struct fileinfo * infobase;
-    infobase=malloc(sizeof(struct fileinfo)*INFO_N);
+    dealpram();          //deal the command
+    fFind(places,Fname); //try to find the file
 
-    dirnow=openDIR(".");
-    storetoB(dirnow,infobase);//把目录信息暂存
-
-    
+    return 0;
 }
-DIR * openDIR(char * path)
+void fFind(char place[],char tofind[])
 {
-    DIR * retdir;
-    if((retdir=opendir(path) )!= NULL)
-        return retdir;
-    else
-    {
-        perror("open dir");
-        exit(1);
-    }
+    chpath(place);      //change path to the right place
+
 }
