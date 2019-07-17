@@ -5,6 +5,7 @@
 #include <math.h>
 #define STDIN 0
 #define MAX 100
+#define TURNON 0
 int main(int argc, char * argv[])
 {
 
@@ -28,7 +29,6 @@ int main(int argc, char * argv[])
     char oneline[MAX+1];
     char * ch;
     int numin;
-    int i = 1;
     int flag = 1; // a line-num must before the first char of every line
     int counter = 0;
     while(numin = read(STDIN,&pool,MAX))
@@ -37,9 +37,9 @@ int main(int argc, char * argv[])
         ch = pool;
         while(*ch != '\0')
         {
-            if(flag == 1) // when the last char is '\n' ,then print line num
+            if(flag == 1 && TURNON) // when the last char is '\n' ,then print line num
             {
-                printf("%d ",i++);
+                printf("%d ",linec);
                 flag = 0;
             }
             //putchar(*ch);
@@ -47,7 +47,10 @@ int main(int argc, char * argv[])
             {
                 oneline[counter] = '\0';
                 if(++linec == sum) //search for the wanted line
+                {
+                    //puts(oneline);
                     execlp(argv[2],argv[2],oneline,NULL); //exec a process
+                }
                 counter = 0; //reset,record the newest line
                 flag = 1;
             }
