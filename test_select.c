@@ -2,10 +2,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 #include <sys/select.h>
 #include <stdio.h>
+#include <stdbool.h>
 int main(void)
 {
 	int txt_fd = open("test.txt",O_RDONLY);// 文件流输入
@@ -17,7 +16,6 @@ int main(void)
 	fd_set read_set;
 	int max_fd = txt_fd + 1;
 	FD_ZERO(&read_set);// 清零所有位
-	int count;
 	char buf1[10];
 	char buf2[100];
 	bool flag = false;
