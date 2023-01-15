@@ -1,3 +1,6 @@
 add_executable(hello2 hello2.c)
 add_executable(hellocv hellocv.c)
 add_executable(rewind rewind.c)
+target_link_libraries(rewind curses)
+target_link_libraries(hellocv curses)
+target_link_libraries(hello2 curses)
